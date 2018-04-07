@@ -1,4 +1,6 @@
 const LandingPage = require('../models/LandingPage')
+const Experience = require('../models/Experience')
+const Project = require('../models/Project')
 
 LandingPage.remove({}).then(() => {
   LandingPage.create({
@@ -10,6 +12,54 @@ LandingPage.remove({}).then(() => {
       'I need a job to pay off my student debt (and fund my addiction to dance).'
   }).then(about => {
     console.log(about)
+  })
+})
+
+Experience.remove({}).then(() => {
+  Experience.create({
+    job: 'Spanish Teacher K-12',
+    location: 'Montgomery County Public Schools',
+    duties: 'Babysit children who do not want to learn -_-',
+    dates: '2017',
+    skillsAcquired:
+      'Backward Design for lesson plans, tutor kids, teach classes, manage classroom of 30 students 5x a day',
+    managerName: 'MCPS',
+    managerContact: 'MCPS email',
+    likes: 'planning',
+    dislikes: 'kids',
+    reasonLeft:
+      'I did not enjoy working with the kids as much as learning the language.'
+  }).then(experience => {
+    console.log(experience),
+      Experience.create({
+        job: 'Substitute Teacher',
+        location: 'Selinsgrove Area High School',
+        duties: 'Babysit children who do not want to learn.',
+        dates: '2015-2017',
+        skillsAcquired:
+          'Backward Design for lesson plans, tutor kids, teach classes, manage classroom of 30 students 5x a day',
+        managerName: 'SAHS',
+        managerContact: 'SAHS email',
+        likes: 'planning, fun to joke with kids',
+        dislikes: 'rules',
+        reasonLeft:
+          'I did not enjoy working with the kids as much as learning on my own.'
+      }).then(experience => {
+        console.log(experience)
+      })
+  })
+})
+
+Project.remove({}).then(() => {
+  Project.create({
+    name: 'Spanish Trivia',
+    description: 'A basic language-learning prototype',
+    image:
+      'https://www.google.com/search?biw=1280&bih=726&tbm=isch&sa=1&ei=mCLJWuulGeyKjwSB-qOICw&q=bull+cartoon+png+open+source&oq=bull+cartoon+png+open+source&gs_l=psy-ab.3...13350.15852.0.15951.16.15.0.1.1.0.144.1381.10j5.15.0....0...1c.1.64.psy-ab..0.5.356...0j0i8i10i30k1j0i8i30k1j0i30k1.0.451r2ICTJlM&safe=active&ssui=on#imgrc=-gfSB8g03-w-2M:',
+    languages: 'HTML, CSS, Javascript ',
+    link: 'https://hannahaurand.github.io/SpanishTrivia/'
+  }).then(project => {
+    console.log(project)
     process.exit()
   })
 })

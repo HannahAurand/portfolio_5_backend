@@ -1,6 +1,7 @@
 const LandingPage = require('../models/LandingPage')
 const Experience = require('../models/Experience')
 const Project = require('../models/Project')
+const Playground = require('../models/Playground')
 
 LandingPage.remove({}).then(() => {
   LandingPage.create({
@@ -58,6 +59,18 @@ Project.remove({}).then(() => {
       'https://www.google.com/search?biw=1280&bih=726&tbm=isch&sa=1&ei=mCLJWuulGeyKjwSB-qOICw&q=bull+cartoon+png+open+source&oq=bull+cartoon+png+open+source&gs_l=psy-ab.3...13350.15852.0.15951.16.15.0.1.1.0.144.1381.10j5.15.0....0...1c.1.64.psy-ab..0.5.356...0j0i8i10i30k1j0i8i30k1j0i30k1.0.451r2ICTJlM&safe=active&ssui=on#imgrc=-gfSB8g03-w-2M:',
     languages: 'HTML, CSS, Javascript ',
     link: 'https://hannahaurand.github.io/SpanishTrivia/'
+  }).then(project => {
+    console.log(project)
+  })
+})
+
+Playground.remove({}).then(() => {
+  Playground.create({
+    name: 'Reverse a string or number',
+    about: 'a function to reverse the order of a number',
+    link:
+      'https://www.w3resource.com/javascript-exercises/javascript-function-exercise-1.php',
+    codeSnippet: 'insert code here'
   }).then(project => {
     console.log(project)
     process.exit()

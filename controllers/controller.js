@@ -27,7 +27,7 @@ router.get('/experience', (req, res) => {
     })
 })
 
-router.get('/Project', (req, res) => {
+router.get('/project', (req, res) => {
   Project.find()
     .then(project => {
       res.json(project)
@@ -37,7 +37,7 @@ router.get('/Project', (req, res) => {
     })
 })
 
-router.get('Playground', (req, res) => {
+router.get('/playground', (req, res) => {
   Playground.find()
     .then(playground => {
       res.json(playground)

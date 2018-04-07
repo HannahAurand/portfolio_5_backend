@@ -3,6 +3,9 @@ const Experience = require('../models/Experience')
 const Project = require('../models/Project')
 const Playground = require('../models/Playground')
 
+//seed data for to make sure the api is rendering
+//json data at all necessary routes.
+
 LandingPage.remove({}).then(() => {
   LandingPage.create({
     name: 'Hannah Aurand',

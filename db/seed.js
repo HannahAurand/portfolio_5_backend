@@ -63,28 +63,25 @@ Project.remove({}).then(() => {
     languages: 'HTML, CSS, Javascript ',
     link: 'https://hannahaurand.github.io/SpanishTrivia/'
   }).then(project => {
-    console.log(project)
-  })
-})
-
-Project.remove({}).then(() => {
-  Project.create({
-    name: 'Faith Forward',
-    description:
-      'An app for faith organizations to post their events in one space.',
-    image: '',
-    languages: 'MEHN Stack (Mongoose, Express, Handlebars, NodeJS',
-    link: 'https://faithforward.herokuapp.com/'
-  })
-})
-
-Project.remove({}).then(() => {
-  Project.create({
-    name: 'Starving Artist',
-    description: 'An app for art students in DC to share their artwork.',
-    image: '',
-    languages: 'MEHN Stack (Mongoose, Express, React, NodeJS',
-    link: 'http://starving-artist.surge.sh/'
+    console.log(project),
+      Project.create({
+        name: 'Faith Forward',
+        description:
+          'An app for faith organizations to post their events in one space.',
+        image: '',
+        languages: 'MEHN Stack (Mongoose, Express, Handlebars, NodeJS',
+        link: 'https://faithforward.herokuapp.com/'
+      }).then(project => {
+        console.log(project),
+          Project.create({
+            name: 'Starving Artist',
+            description:
+              'An app for art students in DC to share their artwork.',
+            image: '',
+            languages: 'MEHN Stack (Mongoose, Express, React, NodeJS',
+            link: 'http://starving-artist.surge.sh/'
+          })
+      })
   })
 })
 

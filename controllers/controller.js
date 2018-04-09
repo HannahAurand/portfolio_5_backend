@@ -52,15 +52,46 @@ router.post('/playground/create', (req, res) => {
     link: req.body.link,
     codeSnippet: req.body.codeSnippet
   })
-
+    .then(() => {
+      project.save()
+    })
+    .then(() => {
+      res.json('Playground added')
+    })
 })
 
 //DISPLAY a specific playground page
+router.get('/playground/:id', (req, res) => {
+  Playground.findOne({ _id: req.params.id })
+    // .populate('playground')
+    .then(playground => {
+      res.json(playground)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
 
 //UPDATE a specific playground
-
+router.put('/playground/:id/edit', (req, res) => {
+  Playground.findOneAndUpdate({ _id: req.params.id }, req.body)
+    .then(() => {
+      res.json('Playground updated')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
 //DELETE a specific playground
-
+router.delete('/playground/:id', (req, res) => {
+  Playground.findOneAndRemove({ _id: req.params.id })
+    .then(() => {
+      res.json('Playground Removed')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
 
 //--------------------------------PROJECT PAGE CRUD---------------------------------------------
 
@@ -79,15 +110,15 @@ router.get('/project', (req, res) => {
 router.post('project/create', (req, res) => {
   // Project.findOne({ _id: req.params.id })
   //   .then(project => {
-      Project.create({
-        name: req.body.name,
-        description: req.body.description,
-        image: req.body.image,
-        languages: req.body.languages,
-        link: req.body.link
-      }).then(() => {
-        project.save()
-      })
+  Project.create({
+    name: req.body.name,
+    description: req.body.description,
+    image: req.body.image,
+    languages: req.body.languages,
+    link: req.body.link
+  })
+    .then(() => {
+      project.save()
     })
     .then(() => {
       res.json('Project added')

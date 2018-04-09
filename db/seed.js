@@ -80,6 +80,8 @@ Project.remove({}).then(() => {
             image: '',
             languages: 'MEHN Stack (Mongoose, Express, React, NodeJS',
             link: 'http://starving-artist.surge.sh/'
+          }).then(project => {
+            console.log(project)
           })
       })
   })

@@ -44,8 +44,6 @@ router.get('/playground', (req, res) => {
 //CREATE a new playground
 
 router.post('/playground/create', (req, res) => {
-  // Playground.findOne({ _id: req.params.id})
-  // .then(playground => {
   Playground.create({
     name: req.body.name,
     about: req.body.about,
@@ -63,7 +61,6 @@ router.post('/playground/create', (req, res) => {
 //DISPLAY a specific playground page
 router.get('/playground/:id', (req, res) => {
   Playground.findOne({ _id: req.params.id })
-    // .populate('playground')
     .then(playground => {
       res.json(playground)
     })
@@ -73,7 +70,7 @@ router.get('/playground/:id', (req, res) => {
 })
 
 //UPDATE a specific playground
-router.put('/playground/:id/edit', (req, res) => {
+router.put('/playground/:id', (req, res) => {
   Playground.findOneAndUpdate({ _id: req.params.id }, req.body)
     .then(() => {
       res.json('Playground updated')
@@ -108,8 +105,6 @@ router.get('/project', (req, res) => {
 
 //CREATE a new project on the projects page
 router.post('project/create', (req, res) => {
-  // Project.findOne({ _id: req.params.id })
-  //   .then(project => {
   Project.create({
     name: req.body.name,
     description: req.body.description,
@@ -141,7 +136,7 @@ router.get('/project/:id', (req, res) => {
 })
 
 //UPDATE project details at specific project page
-router.put('/project/:id/edit', (req, res) => {
+router.put('/project/:id', (req, res) => {
   Project.findOneAndUpdate({ _id: req.params.id }, req.body)
     .then(() => {
       res.json('Project updated')

@@ -13,4 +13,7 @@ app.use('/public', express.static('./public'))
 app.use('/', Controller)
 
 app.set('port', process.env.PORT || 3000)
-app.listen(app.get('port'))
+
+app.listen(app.get('port'), () => {
+  console.log('Todo bien en la puerta')
+})

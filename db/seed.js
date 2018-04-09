@@ -65,6 +65,9 @@ Project.remove({}).then(() => {
   }).then(project => {
     console.log(project)
   })
+})
+
+Project.remove({}).then(() => {
   Project.create({
     name: 'Faith Forward',
     description:
@@ -73,6 +76,9 @@ Project.remove({}).then(() => {
     languages: 'MEHN Stack (Mongoose, Express, Handlebars, NodeJS',
     link: 'https://faithforward.herokuapp.com/'
   })
+})
+
+Project.remove({}).then(() => {
   Project.create({
     name: 'Starving Artist',
     description: 'An app for art students in DC to share their artwork.',

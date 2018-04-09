@@ -6,7 +6,7 @@ const Project = require('../models/Project')
 const User = require('../models/User')
 const LandingPage = require('../models/LandingPage')
 
-//display landing page
+//Display landing page
 router.get('/', (req, res) => {
   LandingPage.find()
     .then(about => {
@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
     })
 })
 
+//Display experience page
 router.get('/experience', (req, res) => {
   Experience.find()
     .then(experience => {
@@ -27,6 +28,43 @@ router.get('/experience', (req, res) => {
     })
 })
 
+//-------------------------------JS PLAYGROUND CRUD------------------------------------------
+
+//DISPLAY the playground page
+router.get('/playground', (req, res) => {
+  Playground.find()
+    .then(playground => {
+      res.json(playground)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+})
+
+//CREATE a new playground
+
+router.post('/playground/create', (req, res) => {
+  // Playground.findOne({ _id: req.params.id})
+  // .then(playground => {
+  Playground.create({
+    name: req.body.name,
+    about: req.body.about,
+    link: req.body.link,
+    codeSnippet: req.body.codeSnippet
+  })
+
+})
+
+//DISPLAY a specific playground page
+
+//UPDATE a specific playground
+
+//DELETE a specific playground
+
+
+//--------------------------------PROJECT PAGE CRUD---------------------------------------------
+
+//DISPLAY ALL projects page
 router.get('/project', (req, res) => {
   Project.find()
     .then(project => {
@@ -37,13 +75,59 @@ router.get('/project', (req, res) => {
     })
 })
 
-router.get('/playground', (req, res) => {
-  Playground.find()
-    .then(playground => {
-      res.json(playground)
+//CREATE a new project on the projects page
+router.post('project/create', (req, res) => {
+  // Project.findOne({ _id: req.params.id })
+  //   .then(project => {
+      Project.create({
+        name: req.body.name,
+        description: req.body.description,
+        image: req.body.image,
+        languages: req.body.languages,
+        link: req.body.link
+      }).then(() => {
+        project.save()
+      })
     })
-    .catch(error => {
-      console.log(error)
+    .then(() => {
+      res.json('Project added')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
+
+//DISPLAY SPECIFIC project at specific project page
+router.get('/project/:id', (req, res) => {
+  Project.findOne({ _id: req.params.id })
+    .populate('projects')
+    .then(project => {
+      res.json(project)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
+
+//UPDATE project details at specific project page
+router.put('/project/:id/edit', (req, res) => {
+  Project.findOneAndUpdate({ _id: req.params.id }, req.body)
+    .then(() => {
+      res.json('Project updated')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
+
+//DELETE a project from the individual project page
+router.delete('/project/:id', (req, res) => {
+  Project.findOneAndRemove({ _id: req.params.id })
+    .then(() => {
+      res.json('Project Removed')
+    })
+    .catch(err => {
+      console.log(err)
     })
 })
 

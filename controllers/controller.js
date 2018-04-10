@@ -104,7 +104,7 @@ router.get('/project', (req, res) => {
 })
 
 //CREATE a new project on the projects page
-router.post('project/create', (req, res) => {
+router.post('/project', (req, res) => {
   Project.create({
     name: req.body.name,
     description: req.body.description,
